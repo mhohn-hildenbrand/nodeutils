@@ -17,7 +17,17 @@ test:
 	$(NEST) --version
 	$(SERVE) --version
 
-.PHONY: all status build test
+pull:
+	$(DOCKER) pull $(NODEUTILS_IMAGE)
+
+push:
+	$(DOCKER) push $(NODEUTILS_IMAGE)
+
+publish:
+	$(DOCKER) tag $(NODEUTILS_IMAGE) $(NODEUTILS_IMAGE):$(shell cat .version)
+	$(DOCKER) push $(NODEUTILS_IMAGE):$(shell cat .version)
+
+.PHONY: all status build test pull push publish
 
 .env:
 	cp defaults.env $@
