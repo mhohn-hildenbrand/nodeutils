@@ -6,6 +6,7 @@ $DOCKER run \
 	--interactive \
 	--tty \
 	--volume=$PWD:/workdir \
+	--user=$(id -u):$(id -g) \
 	--workdir=/workdir \
 	--entrypoint=serve \
 	--publish=$SERVE_URI:$SERVE_URI \
