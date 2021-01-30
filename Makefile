@@ -11,6 +11,10 @@ build:
 
 test:
 	$(NODE) --version
+	$(NPM) --version
+	$(NPX) --version
+	$(NG) --version
+	$(NEST) --version
 
 .PHONY: all status build test
 

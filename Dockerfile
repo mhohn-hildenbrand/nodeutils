@@ -1,4 +1,4 @@
 from node:lts
 WORKDIR /workdir
-RUN npm install @angular/cli @nestjs/cli
+RUN npm install --global @angular/cli @nestjs/cli
 ENTRYPOINT [ "node" ]
