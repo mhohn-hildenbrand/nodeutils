@@ -15,6 +15,7 @@ test:
 	$(NPX) --version
 	$(NG) --version
 	$(NEST) --version
+	$(SERVE) --version
 
 .PHONY: all status build test
 
