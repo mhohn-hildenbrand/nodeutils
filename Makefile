@@ -24,8 +24,10 @@ push:
 	$(DOCKER) push $(NODEUTILS_IMAGE)
 
 publish:
-	$(DOCKER) tag $(NODEUTILS_IMAGE) $(NODEUTILS_IMAGE):$(shell cat .version)
-	$(DOCKER) push $(NODEUTILS_IMAGE):$(shell cat .version)
+	$(eval tag = $(shell git tag --points-at HEAD) )
+	$(if $(tag),,$(error No tag for commit))
+	$(DOCKER) tag $(NODEUTILS_IMAGE) $(NODEUTILS_IMAGE):$(tag)
+	$(DOCKER) push $(NODEUTILS_IMAGE):$(tag)
 
 .PHONY: all status build test pull push publish
 
